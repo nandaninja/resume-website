@@ -1,40 +1,34 @@
-// Get references to the elements
-const showMoreBtn = document.getElementById("show-more");
-const projectList = document.getElementById("project-list");
+// Grab the button and all project cards
+const btn = document.getElementById("show-more");
+const cards = Array.from(document.querySelectorAll(".project"));
 
-// Initially show only the first 6 projects
-let visibleRows = 2; // 2 rows initially visible, each containing 3 projects
-let allProjects = projectList.getElementsByClassName("project");
-let totalProjects = allProjects.length;
+const CHUNK = 6;           // 2 rows × 3 columns = 6 projects per chunk
+const INITIAL = CHUNK;     // initial visible count
+let currentCount = INITIAL;
 
-// Initially hide projects after the first 6
-for (let i = 6; i < totalProjects; i++) {
-  allProjects[i].style.display = "none";
+// Helper to update visibility
+function render() {
+  cards.forEach((card, i) => {
+    card.style.display = i < currentCount ? "block" : "none";
+  });
+  // If we've revealed all, switch to "Show Less"
+  if (currentCount >= cards.length) {
+    btn.textContent = "Show Less";
+  } else {
+    btn.textContent = "Show More";
+  }
 }
 
-// Function to toggle visibility of additional projects
-showMoreBtn.addEventListener("click", function() {
-  const projectsToShow = visibleRows * 3; // 3 projects per row
+// Initial render
+document.addEventListener("DOMContentLoaded", render);
 
-  if (visibleRows * 3 < totalProjects) {
-    // Show the next row of projects
-    for (let i = 0; i < 4; i++) { // Show the next 4 projects
-      if (projectsToShow + i < totalProjects) {
-        allProjects[projectsToShow + i].style.display = "block";
-      }
-    }
-    visibleRows++;
-  }
-
-  // If all projects are shown, hide them and show only the first 6 again
-  if (visibleRows * 3 >= totalProjects) {
-    // Hide all projects except for the first 6
-    for (let i = 6; i < totalProjects; i++) {
-      allProjects[i].style.display = "none";
-    }
-    visibleRows = 2; // Reset to showing the first 6
-    showMoreBtn.textContent = "Show More"; // Reset button text
+btn.addEventListener("click", () => {
+  if (currentCount < cards.length) {
+    // Reveal the next chunk
+    currentCount = Math.min(cards.length, currentCount + CHUNK);
   } else {
-    showMoreBtn.textContent = "Show Less"; // Change the button to show "Show Less"
+    // Collapse back to the initial 6
+    currentCount = INITIAL;
   }
+  render();
 });
