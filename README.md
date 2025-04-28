@@ -17,11 +17,13 @@ ________________________________________________________________________________
 Sections Overview
 
 About Me
+---------------
 Introduction and background about my passion for business, technology, and problem-solving.
----------------
+
 Education
-BBA in Digital Business & Entrepreneurship – IIM Bangalore (2024–2027)
 ---------------
+BBA in Digital Business & Entrepreneurship – IIM Bangalore (2024–2027)
+
 Projects
 Showcases key projects including:
 ---------------
@@ -44,11 +46,14 @@ Endodontic Website
 More mini projects (e.g., Digital Clock, Simple Quiz App)
 ______________________________________________________________________________________________________________________________________________________________________
 Skills
+-------------------
 Core technical skills such as HTML, CSS, JavaScript, Excel.
--------------------
+
 Contact
+-------------------
 Email for professional connections and opportunities.
--------------------
+
 Resume Download
-Option to download the full resume as a PDF.
 -------------------
+Option to download the full resume as a PDF.
+
